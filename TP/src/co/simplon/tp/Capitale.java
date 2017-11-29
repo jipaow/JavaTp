@@ -10,7 +10,7 @@ public class Capitale extends City {
         monument ="aucun";
     }
 
-    public Capitale(String nom, int hab, String pays, String monument) {
+    public Capitale(String nom, int hab, String pays, String monument) throws NombreHabitantException,NomDeVillleExecption {
         super(nom, hab, pays);
         this.monument = monument;
     }

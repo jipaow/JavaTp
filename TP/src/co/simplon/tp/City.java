@@ -20,15 +20,29 @@ public class City {
         nbreInstancesBis++;
     }
 
-    public City(String pNom, int pNbre, String pPays) {
+    public City(String pNom, int pNbre, String pPays)
+        throws NombreHabitantException , NomDeVillleExecption{
+            if(pNbre < 0)
+                throw new NombreHabitantException(pNbre);
 
-        nomVille = pNom;
-        nomPays = pPays;
-        nbreHabitants = pNbre;
-        this.setCategorie();
-        nbreInstances++;
-        nbreInstancesBis++;
-    }
+            if(pNom.length() < 3)
+                throw new NomDeVillleExecption("le nom de la ville est inférieur à 3 caractères ! nom =" +pNom);
+
+            if(!pNom.matches("[a-zA-Z]+") || pNom.equals(""))
+                throw new NomDeVillleExecption("le nom de la ville n'est pas valide ! nom =" +pNom);
+            else
+            {
+                nbreInstances++;
+                nbreInstancesBis++;
+
+                nomVille = pNom;
+                nomPays = pPays;
+                nbreHabitants = pNbre;
+                this.setCategorie();
+            }
+        }
+
+
 
 
     //******* METHODES D'INSTANCE*********
